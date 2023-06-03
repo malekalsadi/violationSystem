@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #container {
+            width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        #container-body {
+            padding: 20px;
+        }
+        
+        .heading {
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        #errorBox {
+            color: #f00;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            font-size: 14px;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        .form-group input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .form-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .register-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="container-body">
+            <h2 class="heading">Login Form</h2>
+            <div id="errorBox"></div>
+            <form action="LoginServlet" method="POST" name="form">
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="text" name="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Your Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter your password">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+            <div class="register-link">
+                <a href="RegisterForm.html">Register User</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

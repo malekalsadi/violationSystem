@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Report Information</title>
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1{
+      margin-bottom: 20px;
+    }
+    form{
+      width: 400px;
+      margin: 0 auto;
+    }
+    label{
+      display: block;
+      margin-bottom: 10px;
+    }
+    input[type="date"],
+    input[type="text"],
+    select{
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    select{
+      height: 32px;
+    }
+    input[type="file"] {
+      margin-top: 5px;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function populateCities() {
+      var countrySelect = document.getElementById("countrySelect");
+      var citySelect = document.getElementById("citySelect");
+      var selectedCountry = countrySelect.options[countrySelect.selectedIndex].value;      
+      citySelect.innerHTML = "";
+      if (selectedCountry === "USA") {
+        var cities = ["New York", "Los Angeles", "Chicago", "Houston"];
+      } else if (selectedCountry === "UK") {
+        var cities = ["London", "Manchester", "Birmingham", "Glasgow"];
+      } else if (selectedCountry === "UAE") {
+        var cities = ["Dubai", "Sharjah", "Abu Dhabi","Fujairah"];
+      } else if(selectedCountry === "Jordan"){
+    	  var cities = ["Amman", "Aqaba", "Irbid", "Wadi Ram"];
+      }
+      
+      for (var i = 0; i < cities.length; i++) {
+        var option = document.createElement("option");
+        option.text = cities[i];
+        option.value = cities[i];
+        citySelect.add(option);
+      }
+    }
+  </script>
+</head>
+<body>
+  <form action="checkReport" method="post" enctype="multipart/form-data">
+    <h1>Report Information</h1>
+    <div>
+      <label>Date:</label>
+      <input type="date" name="date" id="datein">
+  <script>
+    var cdate = new Date();
+    var y=cdate.getFullYear();
+    var m=("0"+(cdate.getMonth()+1)).slice(-2);
+    var d=("0"+cdate.getDate()).slice(-2);
+    var fdate=y+ "-"+m+"-"+d;
+    var datein = document.getElementById("datein");
+    datein.value = fdate;
+  </script>
+    </div>
+    <br>
+    <div>
+      <label>Phone Number:</label>
+      <input type="text" name="Phone">
+    </div>
+    <br>
+    <div>
+      <label>Country:</label>
+      <select id="countrySelect" name = "countrySelect" onchange="populateCities()">
+        <option value="">Select a country</option>
+        <option value="USA">United States</option>
+        <option value="Jordan">Jordan</option>
+        <option value="UK">United Kingdom</option>
+        <option value="UAE">Emirates</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <label>City:</label>
+      <select id="citySelect" name = "cityselect">
+        <option value="">Select a city</option>
+      </select>
+    </div>
+    
+    <br>
+    	<div>
+ 			<label>Upload:</label>
+  			<input type="file" name="upload" accept=".jpg, .jpeg, .png, .mp4, .avi, .mov">
+		</div>	
+    <br>
+    
+    <div>
+      <label>Type of Violation:</label>
+      <select name="violation">
+        <option value="">Select a violation</option>
+        <option value="red_light">Red Light</option>
+        <option value="stop_sign">Running a stop sign</option>
+        <option value="jaywalking">Jay walking</option>
+        <option value="littering">Littering</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+</body>
+</html>
