@@ -96,8 +96,7 @@
         <td>
             <% 
                 String mediaPath = vio.getMedia();
-                if (mediaPath.endsWith(".jpg") || mediaPath.endsWith(".jpeg") || mediaPath.endsWith(".png")) {        
-                 request.setAttribute("image", mediaPath);
+                request.setAttribute("image", mediaPath);
             %>
     		 <jsp:useBean id="mediabean" class="classes.mediaBean" scope="session"></jsp:useBean>
     		 <jsp:setProperty property="path" name="mediabean" value="<%=mediaPath%>"/>
@@ -106,20 +105,13 @@
              </form>      
            
             <% 
-                } else if (mediaPath.endsWith(".mp4") || mediaPath.endsWith(".avi") || mediaPath.endsWith(".mov")) { 
-            %>
-            <video controls>
-                <source src="<%= mediaPath %>" type="video/mp4" />
-                <h2>Your browser does not support the video tag.</h2>
-            </video>
-           
-            <% 
-                } else { 
-            %>
-            
+               if ( !(mediaPath.endsWith(".mp4") || mediaPath.endsWith(".avi") || mediaPath.endsWith(".mov") ||
+            		   mediaPath.endsWith(".jpg") || mediaPath.endsWith(".gpeg") || mediaPath.endsWith(".png" )) ) { 
+            %>  
             Unsupported media format.
             <% } %>
         </td>
+        
         <td>Violation Type: <br> <%= vio.getVioType() %></td>
         <td>Violation Date: <br> <%= vio.getDate() %></td>
         <td>

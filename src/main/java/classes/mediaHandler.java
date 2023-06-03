@@ -41,7 +41,7 @@ public class mediaHandler {
 	        return timestamp + randomString;
 	}
 	
-	private String extractExtension(String fileName) {
+	public static String extractExtension(String fileName) {
 		 String fileExtension = "";
 	     int extensionIndex = fileName.lastIndexOf(".");
 	     if (extensionIndex != -1 && extensionIndex < fileName.length() - 1) {

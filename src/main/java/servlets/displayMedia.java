@@ -11,17 +11,18 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import classes.mediaBean;
+import classes.mediaHandler;
 /**
  * Servlet implementation class displayImage
  */
 @WebServlet("/displayImage")
-public class displayImage extends HttpServlet {
+public class displayMedia extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public displayImage() {
+    public displayMedia() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +35,15 @@ public class displayImage extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
          mediaBean mb = (mediaBean)request.getSession().getAttribute("mediabean");
          String path = mb.getPath();
-         response.setContentType("image/jpeg");
+         
+         if(mediaHandler.extractExtension(path).equalsIgnoreCase("jpeg") || mediaHandler.extractExtension(path).equalsIgnoreCase("jpg")
+        		|| mediaHandler.extractExtension(path).equalsIgnoreCase("png"))
+        	 response.setContentType("image/jpeg");
+         else if(mediaHandler.extractExtension(path).equalsIgnoreCase("mp4") || mediaHandler.extractExtension(path).equalsIgnoreCase("avi")
+         		|| mediaHandler.extractExtension(path).equalsIgnoreCase("mov"))
+        	  response.setContentType("video/mp4");
+         
+         
           ServletOutputStream se = response.getOutputStream();
          FileInputStream in = new FileInputStream(path);
          BufferedInputStream bin = new BufferedInputStream(in);
