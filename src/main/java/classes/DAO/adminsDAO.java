@@ -27,6 +27,7 @@ public class adminsDAO extends BaseDAO<String>{
 	        e.printStackTrace();
 	    }
 	}
+	
 	@Override
 	public Object getById(String id) {
 		String password = "";
@@ -37,7 +38,8 @@ public class adminsDAO extends BaseDAO<String>{
 	        if (resultSet.next()) {
 	            password = resultSet.getString("password");
 	        }
-
+	        
+	        
 	        resultSet.close();
 	        statement.close();
 	        

@@ -48,8 +48,10 @@ public class violationAction extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Bean b = (Bean)request.getSession().getAttribute("beanid");
+		Bean b = (Bean) getServletContext().getAttribute("beanid");
 		int id = b.getId();
+		
+		
 		String choise = request.getParameter("accept");
 		List<violation> lst = (List<violation>)((violationsDAO) DAOFactory.getInstance().getDAO(mapKey.violation)).getById(id);
 		violation vio = lst.get(0);

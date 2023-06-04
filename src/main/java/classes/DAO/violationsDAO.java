@@ -25,6 +25,7 @@ public class violationsDAO extends BaseDAO<Integer>{
 		String media = Vio.getMedia();
 		String vioType = Vio.getVioType();
 		String vioDate = Vio.getDate();
+		
 		try {
 		    Statement statement = connection.createStatement();
 		    String insertQuery = "INSERT INTO violations ( phone, countryId, city, media, vioType, date) VALUES "

@@ -40,6 +40,7 @@ public class checkReport extends HttpServlet {
            CheckViolation cv = new CheckViolation();
            response.setContentType("text/html");
 		   PrintWriter out = response.getWriter();
+		   
 		   String phone = request.getParameter("Phone");
 		   String cityy = request.getParameter("cityselect");
 		   String country = request.getParameter("countrySelect");

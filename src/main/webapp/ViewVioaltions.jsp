@@ -72,7 +72,7 @@
         List<violation> violations = (List<violation>) vioDao.getById(null);
 
         for (violation vio : violations) {
-            String dateString = "2023-06-02";
+            String dateString = vio.getDate();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             Date date = dateFormat.parse(dateString);
             LocalDate currentDate = LocalDate.now();
@@ -115,9 +115,8 @@
         <td>Violation Type: <br> <%= vio.getVioType() %></td>
         <td>Violation Date: <br> <%= vio.getDate() %></td>
         <td>
-            <jsp:useBean id="beanid" class="classes.Bean" scope="session" />
+            <jsp:useBean id="beanid" class="classes.Bean" scope="application" />
             <jsp:setProperty property="id" name="beanid" value="<%= id %>" />
-            
         
         </td>
     </tr>

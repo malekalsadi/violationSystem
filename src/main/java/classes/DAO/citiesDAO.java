@@ -75,8 +75,6 @@ public class citiesDAO extends BaseDAO<city>{
 	            lst.set(2, resultSet.getInt("red_light"));
 	            lst.set(3, resultSet.getInt("jaywalking"));
 	        }
-	        for(int X : lst)
-	        	System.out.print(X + " ");
 	        
 	        resultSet.close();
 	        statement.close();
